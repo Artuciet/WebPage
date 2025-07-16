@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>//Agregando segmento de JS para poder emplear el atributo Themes.
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+        }
+    </script>
+    <div class="container-fluid"><!--Haciendo de toda la webPage una pagina contenedora.-->
+      <div class="row align-items-center justify-content-end p-2"><!--Aplicando Row para hacer filas y dentro de estas contenedores de items.-->
+        <div class="col-auto">
+          <!--Agregando cambios de temas.-->
+            <div class="btn-group me-2">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonThemes">
+                  <li><a class="dropdown-item" href="#" onclick="setTheme('auto')">Default Mode</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTheme('dark')">Dark Mode</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTheme('light')">Light Mode</a></li>
+              </ul>
+            </div>
+            <!--Agregando metodos de pago.-->
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm" type="button">Payment Methodes</button>
+              <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <!--
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                  -->
+              </button>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">Binance</li>
+                  <li class="dropdown-item">PayPal</li>
+                  <li class="dropdown-item">AirTM</li>
+                  <li class="dropdown-item">Zinli</li>
+                  <!--<li class="dropdown-item" type="button">-->
+                  <li>
+                    <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#bankAccountsModal">Bank Accounts</button>
+                  </li>
+                    <!--
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>    
+                    </div>
+                    -->
+                  <!--</li>-->
+              </ul>
+            </div>
+        </div>
+      </div>
+      <!--Agregando barra de navegacion de tipo pastilla-->
+      <div class="row mt-3 justify-content-end">
+        <!--Creacion de la barra de navegacion y opciones...-->
+        <div class="col-auto">
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
+          </li>
+        </ul>
+        </div>
+      </div>
+      <!--Creacion del contenido de la Barra de navegacion-->
+      <div class="row mt-3 justify-content-end">
+        <!--Creacion del contenido dentro de estas opciones de enavegacion...-->
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">texto</div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">texto 2</div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">texto 3</div>
+          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">texto 4</div>
+        </div>
+      </div>
+
+      <!--Creacion del contenido del modal para cuentas bancarias:-->
+      <div class="modal fade" id="bankAccountsModal" tabindex="-1" aria-labelledBy="bankAccountsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bankAccountsModalLabel">Bank Accounts</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Mercantil</h5>
+                  <p class="card-text">Account Number: XXXX-XXXX-XXXX-XXXX-XXXX</p>
+                  <p class="card-text">Bank Name: Mercantil. C.A</p>
+                  <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Bancamiga.</h5>
+                  <p class="card-text">Account Number: XXXX-XXXX-XXXX-XXXX-XXXX</p>
+                  <p class="card-text">Bank Name: Bancamiga. C.A</p>
+                  <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Banco de Venezuela.</h5>
+                  <p class="card-text">Account Number: XXXX-XXXX-XXXX-XXXX-XXXX</p>
+                  <p class="card-text">Bank Name: Banco de Venezuela. C.A</p>
+                  <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+              </div>
+            </div>
+            <!--Se crea el segmento del pie de pagina del modal.-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Creando el Footer o pie de pagina.-->
+    <footer class="mt-auto bg-primary py-3"> <div class="container text-center">
+            Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>
