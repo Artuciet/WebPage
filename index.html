@@ -57,7 +57,7 @@
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
+            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Disabled</button>
           </li>
         </ul>
         </div>
@@ -68,31 +68,40 @@
         <div class="tab-content" id="pills-tabContent">
           <!--Navegation Home-->
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-            <div id="carouselExampleIndicators" class="carousel slide">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <div class="container text-center mt-3">
+              <!-- Carrusel centrado y contenido correctamente -->
+              <div class="container text-center mt-3">
+                <div class="row justify-content-center">
+                  <div class="col-md-6">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-touch="false" data-bs-interval="5000">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner rounded shadow">
+                        <div class="carousel-item active">
+                          <img src="Res/GymmeterLogo.png" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Gymmeter">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="Res/ReconFaceLogo.PNG" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="ReconFace">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="Res/GymAppLogo.png" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="GymApp">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="Res/GymmeterLogo.png" class="d-block w-100" alt="Gymmeter">
-                </div>
-                <div class="carousel-item">
-                  <img src="Res/ReconFaceLogo.PNG" class="d-block w-100" alt="ReconFace">
-                </div>
-                <div class="carousel-item">
-                  <img src="Res/GymAppLogo.png" class="d-block w-100" alt="GymApp">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
             </div>
           </div>
           <!--Navegation Profile-->
@@ -106,7 +115,10 @@
             <!--Link de WhatsApp-->
             <div>
               <button class="btn btn-primary bg-success">
-                <a href="https://eight-zinc-fab.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F50a857fe-582a-453e-8c6f-adb8d21e13d0%2F77564a53-b6ea-4e6b-983c-eab155988917%2FWS_icon.png?table=block&id=8e43e7b3-cd64-41a8-9f07-4c2bea7d49ef&spaceId=50a857fe-582a-453e-8c6f-adb8d21e13d0&width=40&userId=&cache=v2" class="text-bg-success">WhatsApp</a>
+                <div class="col-2 justify-content-center">
+                  <a href="https://wa.link/ii2hfw" class="text-bg-success">WhatsApp</a>
+                  <img src="https://eight-zinc-fab.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F50a857fe-582a-453e-8c6f-adb8d21e13d0%2F77564a53-b6ea-4e6b-983c-eab155988917%2FWS_icon.png?table=block&id=8e43e7b3-cd64-41a8-9f07-4c2bea7d49ef&spaceId=50a857fe-582a-453e-8c6f-adb8d21e13d0&width=40&userId=&cache=v2" alt="WhatsApp" class="justify-content-center">
+                </div>
               </button>
             </div>
             <!--Link de correo Gmail-->
@@ -128,7 +140,13 @@
               </button>
             </div>
           </div>
-          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">texto 4</div>
+          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+            <ul>
+              <li>
+                <a href="Search.php">Buscar</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -180,5 +198,29 @@
             Todos los derechos reservados.
         </div>
     </footer>
+
+    <script>
+document.getElementById('searchForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const searchParams = new URLSearchParams(formData);
+  
+  fetch('Search.php?' + searchParams.toString())
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('modalResultsContent').innerHTML = data;
+      const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+      resultsModal.show();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.getElementById('modalResultsContent').innerHTML = 
+        '<div class="alert alert-danger">Error al cargar los resultados</div>';
+      const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+      resultsModal.show();
+    });
+});
+  </script>
 </body>
 </html>
