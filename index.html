@@ -64,29 +64,69 @@
       </div>
       <!--Creacion del contenido de la Barra de navegacion-->
       <div class="row mt-3 justify-content-end">
-        <!--Creacion del contenido dentro de estas opciones de enavegacion...-->
+        <!--Creacion del contenido dentro de estas opciones de navegacion...-->
         <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">texto</div>
+          <!--Navegation Home-->
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+            <div id="carouselExampleIndicators" class="carousel slide">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="Res/GymmeterLogo.png" class="d-block w-100" alt="Gymmeter">
+                </div>
+                <div class="carousel-item">
+                  <img src="Res/ReconFaceLogo.PNG" class="d-block w-100" alt="ReconFace">
+                </div>
+                <div class="carousel-item">
+                  <img src="Res/GymAppLogo.png" class="d-block w-100" alt="GymApp">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <!--Navegation Profile-->
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">texto 2</div>
+          <!--Navegation Contact-->
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
             <!--Link de Notion-->
             <button class="btn btn-primary bg-secondary">
               <a href="https://eight-zinc-fab.notion.site/Adri-n-Arturo-Hern-ndez-Garc-a-c678597155b349d8a82e7921b0e90a1d?source=copy_link" class="text-bg-secondary">Perfil Profesional</a>
             </button>
             <!--Link de WhatsApp-->
-            <button class="btn btn-primary bg-success">
-              <a href="https://eight-zinc-fab.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F50a857fe-582a-453e-8c6f-adb8d21e13d0%2F77564a53-b6ea-4e6b-983c-eab155988917%2FWS_icon.png?table=block&id=8e43e7b3-cd64-41a8-9f07-4c2bea7d49ef&spaceId=50a857fe-582a-453e-8c6f-adb8d21e13d0&width=40&userId=&cache=v2" class="text-bg-success">WhatsApp</a>
-            </button>
+            <div>
+              <button class="btn btn-primary bg-success">
+                <a href="https://eight-zinc-fab.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F50a857fe-582a-453e-8c6f-adb8d21e13d0%2F77564a53-b6ea-4e6b-983c-eab155988917%2FWS_icon.png?table=block&id=8e43e7b3-cd64-41a8-9f07-4c2bea7d49ef&spaceId=50a857fe-582a-453e-8c6f-adb8d21e13d0&width=40&userId=&cache=v2" class="text-bg-success">WhatsApp</a>
+              </button>
+            </div>
             <!--Link de correo Gmail-->
-            <button class="btn btn-primary bg-danger">
-              <a href="#" class="text-bg-danger">Gmail: vt.adrian.ahg@gmail.com</a>
-            </button>
+            <div>
+              <button class="btn btn-primary bg-danger">
+                <a href="#" class="text-bg-danger">Gmail: vt.adrian.ahg@gmail.com</a>
+              </button>
+            </div>
             <!--Link de correo Outlook-->
-            <button class="btn btn-primary bg-primary">
-              <a href="#" class="text-bg-primary">Email:</a>
-            </button>
+            <div>
+              <button class="btn btn-primary bg-info">
+                <a href="#" class="text-bg-info">Email: Outlook</a>
+              </button>              
+            </div>
             <!--Link de FaceBook-->
-            div>button.btn.btn-primary.bg.info>a.text-bg-info
+            <div>
+              <button class="btn btn-primary bg-primary">
+                <a href="#" class="text-bg-primary">FaceBook</a>
+              </button>
+            </div>
           </div>
           <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">texto 4</div>
         </div>
@@ -136,7 +176,7 @@
       </div>
     </div>
     <!--Creando el Footer o pie de pagina.-->
-    <footer class="mt-auto bg-primary py-3"> <div class="container text-center">
+    <footer class="mt-auto bg-secondary py-3"> <div class="container text-center">
             Todos los derechos reservados.
         </div>
     </footer>
