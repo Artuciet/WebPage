@@ -130,30 +130,62 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
           </div>
           <!-- Contenido del Contacto -->
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-            <button class="btn btn-primary bg-secondary">
-              <a href="https://eight-zinc-fab.notion.site/Adri-n-Arturo-Hern-ndez-Garc-a-c678597155b349d8a82e7921b0e90a1d?source=copy_link" class="text-bg-secondary">Perfil Profesional</a>
+            <button class="btn btn-primary bg-secondary mb-2">
+              <a href="https://eight-zinc-fab.notion.site/Adri-n-Arturo-Hern-ndez-Garc-a-c678597155b349d8a82e7921b0e90a1d?source=copy_link" class="text-bg-secondary d-flex align-items-center">
+                Perfil Profesional (Notion)
+              </a>
             </button>
-            <div>
+            <div class="mb-2">
               <button class="btn btn-primary bg-success">
-                <div class="col-2 justify-content-center">
-                  <a href="https://wa.link/ii2hfw" class="text-bg-success">WhatsApp</a>
-                  <img src="https://eight-zinc-fab.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F50a857fe-582a-453e-8c6f-adb8d21e13d0%2F77564a53-b6ea-4e6b-983c-eab155988917%2FWS_icon.png?table=block&id=8e43e7b3-cd64-41a8-9f07-4c2bea7d49ef&spaceId=50a857fe-582a-453e-8c6f-adb8d21e13d0&width=40&userId=&cache=v2" alt="WhatsApp" class="justify-content-center">
-                </div>
+                <a href="https://wa.link/ii2hfw" class="text-bg-success d-flex align-items-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="Logo WhatsApp" style="width: 24px; height: 24px; margin-right: 8px;">
+                  WhatsApp
+                </a>
               </button>
             </div>
-            <div>
-              <button class="btn btn-primary bg-danger">
-                <a href="#" class="text-bg-danger">Gmail: vt.adrian.ahg@gmail.com</a>
-              </button>
-            </div>
-            <div>
-              <button class="btn btn-primary bg-info">
-                <a href="#" class="text-bg-info">Email: Outlook</a>
-              </button>
-            </div>
-            <div>
+            <!-- Boton de contacto por Telegram -->
+            <div class="mb-2">
               <button class="btn btn-primary bg-primary">
-                <a href="#" class="text-bg-primary">FaceBook</a>
+                <a href="https://t.me/Artuciet" class="text-bg-primary d-flex align-items-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" alt="Logo Telegram" style="width: 24px; height: 24px; margin-right: 8px;">
+                  Telegram
+                </a>
+              </button>
+            </div>
+            <!-- Boton de contacto por Gmail -->
+            <div class="mb-2">
+              <button class="btn btn-primary bg-danger">
+                <a href="mailto:vt.adrian.ahg@gmail.com" class="text-bg-danger d-flex align-items-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Gmail_icon_%282020%29.svg/1200px-Gmail_icon_%282020%29.svg.png" alt="Logo Gmail" style="width: 24px; height: 24px; margin-right: 8px;">
+                  Gmail: vt.adrian.ahg@gmail.com
+                </a>
+              </button>
+            </div>
+            <!-- Boton de contacto por Outlook -->
+            <div class="mb-2">
+              <button class="btn btn-primary bg-info">
+                <a href="mailto:tu_email_outlook@outlook.com" class="text-bg-info d-flex align-items-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Microsoft_Outlook_new_logo.svg/1200px-Microsoft_Outlook_new_logo.svg.png" alt="Logo Outlook" style="width: 24px; height: 24px; margin-right: 8px;">
+                  Email: Outlook
+                </a>
+              </button>
+            </div>
+            <!-- Botones de Facebook -->
+            <div class="mb-2">
+              <button class="btn btn-primary bg-primary">
+                <a href="https://www.facebook.com/vt.adrian.ahg/" class="text-bg-primary d-flex align-items-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png" alt="Logo Facebook" style="width: 24px; height: 24px; margin-right: 8px;">
+                  FaceBook
+                </a>
+              </button>
+            </div>
+            <!-- Botones de Instagram -->
+            <div class="mb-2">
+              <button class="btn btn-primary" style="background-image: linear-gradient(to right top, #f09433, #e6683c, #dc2743, #cc2366, #bc1888, #b81c8b, #b51f8d, #b12390, #b12895, #b12e9b, #b033a0, #af39a6); border: none;">
+                <a href="https://www.instagram.com/add_vacations/" class="text-white d-flex align-items-center">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Logo Instagram" style="width: 24px; height: 24px; margin-right: 8px;">
+                  Instagram
+                </a>
               </button>
             </div>
           </div>
