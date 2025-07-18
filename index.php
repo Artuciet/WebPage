@@ -24,7 +24,9 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
     $currentTheme = 'light';
 }
 ?>
+
 <!DOCTYPE html>
+<!-- Comienzo del HTML5 para visualizacion del codigo en pestaña -->
 <html lang="en" data-bs-theme="<?= htmlspecialchars($currentTheme) ?>">
 <head>
     <meta charset="UTF-8">
@@ -34,14 +36,12 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
 </head>
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // La función setTheme() y la lógica de localStorage han sido eliminadas
-        // ya que la persistencia del tema ahora se maneja en PHP.
-    </script>
     <div class="container-fluid">
       <div class="row align-items-center justify-content-end p-2">
         <div class="col-auto">
+          <!-- Botones de selección de Cambio de tema y métodos de pago -->
           <div class="btn-group me-2">
+            <!-- Botones de selección de Cambio de tema -->
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonThemes">
                   <li><a class="dropdown-item" href="?theme=auto">Default Mode</a></li>
@@ -49,6 +49,7 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
                   <li><a class="dropdown-item" href="?theme=light">Light Mode</a></li>
               </ul>
             </div>
+            <!-- Botones de selección de cuentas bancarias en USD digitales -->
             <div class="btn-group">
               <button class="btn btn-secondary btn-sm" type="button">Payment Methods</button>
               <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,6 +66,7 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
             </div>
         </div>
       </div>
+      <!-- Navbar -->
       <div class="row mt-3 justify-content-end">
         <div class="col-auto">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -85,6 +87,7 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
       </div>
       <div class="row mt-3 justify-content-end">
         <div class="tab-content" id="pills-tabContent">
+          <!-- Contenido del Home o Main -->
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
             <div class="container text-center mt-3">
               <div class="container text-center mt-3">
@@ -121,9 +124,11 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
               </div>
             </div>
           </div>
+          <!-- Contenido del Perfil -->
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
             texto 2
           </div>
+          <!-- Contenido del Contacto -->
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
             <button class="btn btn-primary bg-secondary">
               <a href="https://eight-zinc-fab.notion.site/Adri-n-Arturo-Hern-ndez-Garc-a-c678597155b349d8a82e7921b0e90a1d?source=copy_link" class="text-bg-secondary">Perfil Profesional</a>
@@ -152,6 +157,7 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
               </button>
             </div>
           </div>
+          <!-- Contenido de Búsqueda -->
           <div class="tab-pane fade" id="pills-search" role="tabpanel" aria-labelledby="pills-search-tab" tabindex="0">
             <div class="container mt-5">
               <h2 class="mb-4 text-center">🔍 Encuentra tu mejor opción de viaje</h2>
@@ -186,6 +192,7 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
         </div>
       </div>
 
+      <!-- Modal de Cuentas Bancarias -->
       <div class="modal fade" id="bankAccountsModal" tabindex="-1" aria-labelledby="bankAccountsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
@@ -227,9 +234,11 @@ if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
         </div>
       </div>
     </div>
-    <footer class="mt-auto bg-secondary py-3"> <div class="container text-center">
-                Todos los derechos reservados.
-            </div>
+    <!-- Footer -->
+    <footer class="mt-auto bg-secondary py-3">
+      <div class="container text-center">
+        Todos los derechos reservados.
+      </div>
     </footer>
 
     <script>
