@@ -8,15 +8,16 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-    <script>//Agregando segmento de JS para poder emplear el atributo Themes.
+    <script>
+      //Creando una función para cambiar el tema
         function setTheme(theme) {
             document.documentElement.setAttribute('data-bs-theme', theme);
         }
     </script>
-    <div class="container-fluid"><!--Haciendo de toda la webPage una pagina contenedora.-->
-      <div class="row align-items-center justify-content-end p-2"><!--Aplicando Row para hacer filas y dentro de estas contenedores de items.-->
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-end p-2">
         <div class="col-auto">
-          <!--Agregando cambios de temas.-->
+          <!-- Creando el Dropdown para seleccionar el tema -->
             <div class="btn-group me-2">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonThemes">
@@ -25,11 +26,12 @@
                   <li><a class="dropdown-item" href="#" onclick="setTheme('light')">Light Mode</a></li>
               </ul>
             </div>
-            <!--Agregando metodos de pago.-->
+            <!-- Creando el Dropdown para seleccionar el método de pago -->
             <div class="btn-group">
-              <button class="btn btn-secondary btn-sm" type="button">Payment Methodes</button>
+              <button class="btn btn-secondary btn-sm" type="button">Payment Methods</button>
               <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               </button>
+              <!-- Creando el Dropdown para seleccionar el método de pago EN DOLARES DIGITALES-->
                 <ul class="dropdown-menu">
                   <li class="dropdown-item">Binance</li>
                   <li class="dropdown-item">PayPal</li>
@@ -42,9 +44,7 @@
             </div>
         </div>
       </div>
-      <!--Agregando barra de navegacion de tipo pastilla-->
       <div class="row mt-3 justify-content-end">
-        <!--Creacion de la barra de navegacion y opciones...-->
         <div class="col-auto">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -57,19 +57,16 @@
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Disabled</button>
+            <button class="nav-link" id="pills-search-tab" data-bs-toggle="pill" data-bs-target="#pills-search" type="button" role="tab" aria-controls="pills-search" aria-selected="false">Buscar Vuelos/Hoteles</button>
           </li>
         </ul>
         </div>
       </div>
-      <!--Creacion del contenido de la Barra de navegacion-->
       <div class="row mt-3 justify-content-end">
-        <!--Creacion del contenido dentro de estas opciones de navegacion...-->
         <div class="tab-content" id="pills-tabContent">
-          <!--Navegation Home-->
+          <!--Seccion de inicio o Home-->
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
             <div class="container text-center mt-3">
-              <!-- Carrusel centrado y contenido correctamente -->
               <div class="container text-center mt-3">
                 <div class="row justify-content-center">
                   <div class="col-md-6">
@@ -79,6 +76,7 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                       </div>
+                      <!--Creando el carrusel de imágenes de proyectos realizados-->
                       <div class="carousel-inner rounded shadow">
                         <div class="carousel-item active">
                           <img src="Res/GymmeterLogo.png" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Gymmeter">
@@ -104,15 +102,15 @@
               </div>
             </div>
           </div>
-          <!--Navegation Profile-->
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">texto 2</div>
-          <!--Navegation Contact-->
+          <!-- Sección de perfil -->
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+            texto 2
+          </div>
+          <!-- Creando el tab de contacto con enlaces a redes sociales y correo -->
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-            <!--Link de Notion-->
             <button class="btn btn-primary bg-secondary">
               <a href="https://eight-zinc-fab.notion.site/Adri-n-Arturo-Hern-ndez-Garc-a-c678597155b349d8a82e7921b0e90a1d?source=copy_link" class="text-bg-secondary">Perfil Profesional</a>
             </button>
-            <!--Link de WhatsApp-->
             <div>
               <button class="btn btn-primary bg-success">
                 <div class="col-2 justify-content-center">
@@ -121,54 +119,61 @@
                 </div>
               </button>
             </div>
-            <!--Link de correo Gmail-->
             <div>
               <button class="btn btn-primary bg-danger">
                 <a href="#" class="text-bg-danger">Gmail: vt.adrian.ahg@gmail.com</a>
               </button>
             </div>
-            <!--Link de correo Outlook-->
             <div>
               <button class="btn btn-primary bg-info">
                 <a href="#" class="text-bg-info">Email: Outlook</a>
-              </button>              
+              </button>
             </div>
-            <!--Link de FaceBook-->
             <div>
               <button class="btn btn-primary bg-primary">
                 <a href="#" class="text-bg-primary">FaceBook</a>
               </button>
             </div>
           </div>
-          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
-            <!-- Formulario de búsqueda -->
+          <!-- Sección de búsqueda de vuelos y hoteles -->
+          <div class="tab-pane fade" id="pills-search" role="tabpanel" aria-labelledby="pills-search-tab" tabindex="0">
             <div class="container mt-5">
               <h2 class="mb-4 text-center">🔍 Encuentra tu mejor opción de viaje</h2>
-              <form method="GET" action="Search.php" class="row g-3">
+              <!-- Formulario de búsqueda por formulario hacia Search.php -->
+              <form method="GET" action="index.php" class="row g-3" id="searchForm">
                 <div class="col-md-4">
                   <label for="fecha" class="form-label">Fecha de viaje</label>
-                  <input type="date" class="form-control" id="fecha" name="fecha" required>
+                  <input type="date" class="form-control" id="fecha" name="fecha" required
+                         value="<?= isset($_GET['fecha']) ? htmlspecialchars($_GET['fecha']) : '' ?>">
                 </div>
                 <div class="col-md-4">
                   <label for="tipo" class="form-label">Tipo de búsqueda</label>
                   <select class="form-select" id="tipo" name="tipo">
-                    <option value="vuelos">Vuelos</option>
-                    <option value="hoteles">Hoteles</option>
+                    <option value="vuelos" <?= (isset($_GET['tipo']) && $_GET['tipo'] == 'vuelos') ? 'selected' : '' ?>>Vuelos</option>
+                    <option value="hoteles" <?= (isset($_GET['tipo']) && $_GET['tipo'] == 'hoteles') ? 'selected' : '' ?>>Hoteles</option>
                   </select>
                 </div>
                 <div class="col-md-4 d-flex align-items-end">
-                  <button type="submit" class="btn btn-primary w-100">
-                    <a class="nav-link" href="http://localhost/MiPHP/MiPaginaWeb/Search.php">Buscar vuelo</a>
-                  </button>
+                  <button type="submit" class="btn btn-primary w-100">Buscar</button>
                 </div>
               </form>
+              <!-- Mostrando los resultados de la búsqueda por medio del formulario -->
+              <div id="searchResults" class="mt-5">
+                <?php
+                if (isset($_GET['fecha']) && isset($_GET['tipo'])) {
+                    include 'search.php';
+                } else {
+                    echo "<div class='alert alert-info text-center mt-4'>Selecciona una fecha y un tipo de búsqueda para ver los resultados.</div>";
+                }
+                ?>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!--Creacion del contenido del modal para cuentas bancarias:-->
-      <div class="modal fade" id="bankAccountsModal" tabindex="-1" aria-labelledBy="bankAccountsModalLabel" aria-hidden="true">
+      <!-- Modal para cuentas bancarias -->
+      <div class="modal fade" id="bankAccountsModal" tabindex="-1" aria-labelledby="bankAccountsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -201,7 +206,6 @@
                 </div>
               </div>
             </div>
-            <!--Se crea el segmento del pie de pagina del modal.-->
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save Changes</button>
@@ -210,34 +214,35 @@
         </div>
       </div>
     </div>
-    <!--Creando el Footer o pie de pagina.-->
+    <!-- Footer de la página de Derechos reservados y compañias aliadas o que nos avalan y patrocinen -->
     <footer class="mt-auto bg-secondary py-3"> <div class="container text-center">
-            Todos los derechos reservados.
-        </div>
+                Todos los derechos reservados.
+            </div>
     </footer>
 
     <script>
-document.getElementById('searchForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const formData = new FormData(this);
-  const searchParams = new URLSearchParams(formData);
-  
-  fetch('Search.php?' + searchParams.toString())
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('modalResultsContent').innerHTML = data;
-      const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
-      resultsModal.show();
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      document.getElementById('modalResultsContent').innerHTML = 
-        '<div class="alert alert-danger">Error al cargar los resultados</div>';
-      const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
-      resultsModal.show();
+    // Script para activar el tab de búsqueda si hay parámetros de búsqueda en la URL
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('fecha') || urlParams.has('tipo')) {
+            const searchTabButton = document.getElementById('pills-search-tab');
+            const searchTabContent = document.getElementById('pills-search');
+            
+            if (searchTabButton && searchTabContent) {
+                // Desactivar el tab actualmente activo
+                document.querySelector('#pills-tab .nav-link.active')?.classList.remove('active');
+                document.querySelector('#pills-tabContent .tab-pane.show.active')?.classList.remove('show', 'active');
+                
+                // Activar el tab de búsqueda
+                searchTabButton.classList.add('active');
+                searchTabContent.classList.add('show', 'active');
+            }
+        }
     });
-});
-  </script>
+    </script>
 </body>
 </html>
+
+/*
+
+*/
