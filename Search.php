@@ -1,140 +1,78 @@
 <?php
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "libreria_db";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+$conexion = new mysqli("localhost", "root", "", "libreria_db");
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Obtener input del usuario (ejemplo: "Maracaibo-Caracas/20-07-2025")
-$input = isset($_GET['busqueda']) ? $_GET['busqueda'] : '';
-$datosBusqueda = procesarInput($input);
-
-// Función para procesar el input
-function procesarInput($input) {
-    $partes = explode("/", $input);
-    if (count($partes) != 2) {
-        return false;
-    }
-    
-    $rutas = explode("-", $partes[0]);
-    if (count($rutas) != 2) {
-        return false;
-    }
-    
-    return [
-        'origen' => trim($rutas[0]),
-        'destino' => trim($rutas[1]),
-        'fecha' => DateTime::createFromFormat('d-m-Y', trim($partes[1]))
-    ];
+/*
+$fechaSeleccionada = $_GET['fecha'] ?? null;
+$tipo = $_GET['tipo'] ?? 'vuelos';
+if (!$fechaSeleccionada) {
+    die("<div class='alert alert-danger'>Debes seleccionar una fecha para buscar vuelos.</div>");
 }
+*/
 
-if (!$datosBusqueda) {
-    die("Formato de búsqueda incorrecto. Use: Origen-Destino/dd-mm-aaaa");
-}
+$fechaSeleccionada = $_GET['fecha'] ?? null;
+$tipo = $_GET['tipo'] ?? 'vuelos';
 
-// Preparar rango de fechas (4 días antes y después)
-$fechaCentral = $datosBusqueda['fecha'];
-$fechaInicio = clone $fechaCentral;
-$fechaInicio->modify('-4 days');
-$fechaFin = clone $fechaCentral;
-$fechaFin->modify('+4 days');
 
-// Consulta SQL para obtener los vuelos en el rango de fechas
-$sql = "SELECT fecha, MIN(precio) as precio_min, MAX(precio) as precio_max, 
-               AVG(precio) as precio_promedio
+$fechaInicio = date('Y-m-d', strtotime($fechaSeleccionada . ' -4 days'));
+$fechaFin = date('Y-m-d', strtotime($fechaSeleccionada . ' +4 days'));
+
+$sql = "SELECT nombre_avion, fecha, precio 
         FROM vuelos 
-        WHERE origen = ? AND destino = ? 
-          AND fecha BETWEEN ? AND ?
-        GROUP BY fecha
-        ORDER BY fecha";
+        WHERE fecha BETWEEN '$fechaInicio' AND '$fechaFin' 
+        ORDER BY fecha ASC";
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", 
-    $datosBusqueda['origen'], 
-    $datosBusqueda['destino'],
-    $fechaInicio->format('Y-m-d'),
-    $fechaFin->format('Y-m-d')
-);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// Crear matriz de resultados
-$matrizPrecios = [];
-while ($row = $result->fetch_assoc()) {
-    $matrizPrecios[$row['fecha']] = [
-        'min' => $row['precio_min'],
-        'max' => $row['precio_max'],
-        'promedio' => $row['precio_promedio']
-    ];
-}
-
-// Cerrar conexión
-$stmt->close();
-$conn->close();
-
-// Función para resaltar el día más económico
-function encontrarMejorPrecio($matriz) {
-    $mejorPrecio = null;
-    $mejorFecha = null;
-    
-    foreach ($matriz as $fecha => $precios) {
-        if ($mejorPrecio === null || $precios['min'] < $mejorPrecio) {
-            $mejorPrecio = $precios['min'];
-            $mejorFecha = $fecha;
-        }
-    }
-    
-    return ['fecha' => $mejorFecha, 'precio' => $mejorPrecio];
-}
-
-$mejorOpcion = encontrarMejorPrecio($matrizPrecios);
+$resultado = $conexion->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-<div class="container-fluid">
-    <h4 class="text-center mb-4">Análisis de Precios para vuelos <?= htmlspecialchars($datosBusqueda['origen']) ?> a <?= htmlspecialchars($datosBusqueda['destino']) ?></h4>
-    
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead class="table-light">
-                <tr>
-                    <th>Fecha</th>
-                    <th>Precio Mínimo</th>
-                    <th>Precio Máximo</th>
-                    <th>Precio Promedio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($matrizPrecios as $fecha => $precios): ?>
-                    <tr class="<?= ($fecha == $mejorOpcion['fecha']) ? 'table-success' : '' ?> <?= ($fecha == $fechaCentral->format('Y-m-d')) ? 'table-warning' : '' ?>">
-                        <td><?= date('d-m-Y', strtotime($fecha)) ?></td>
-                        <td>$<?= number_format($precios['min'], 2) ?></td>
-                        <td>$<?= number_format($precios['max'], 2) ?></td>
-                        <td>$<?= number_format($precios['promedio'], 2) ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    
-    <?php if ($mejorOpcion['fecha']): ?>
-        <div class="alert alert-info mt-3">
-            <p class="mb-1"><strong>Mejor opción:</strong> <?= date('d-m-Y', strtotime($mejorOpcion['fecha'])) ?> 
-            con un precio de <strong>$<?= number_format($mejorOpcion['precio'], 2) ?></strong></p>
-            <?php if ($mejorOpcion['fecha'] != $fechaCentral->format('Y-m-d')): ?>
-                <p class="mb-0">Ahorras $<?= number_format($matrizPrecios[$fechaCentral->format('Y-m-d')]['min'] - $mejorOpcion['precio'], 2) ?> 
-                comparado con el día <?= $fechaCentral->format('d-m-Y') ?></p>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <title>Comparador de Vuelos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">✈️ Vuelos disponibles entre <?= $fechaInicio ?> y <?= $fechaFin ?></h2>
+
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Fecha</th>
+          <th>Avión</th>
+          <th>Duración estimada</th>
+          <th>Hora de salida</th>
+          <th>Hora de llegada</th>
+          <th>Precio</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        if ($resultado->num_rows > 0) {
+          while ($row = $resultado->fetch_assoc()) {
+            $horaSalida = rand(5, 22) . ":" . str_pad(rand(0, 59), 2, "0", STR_PAD_LEFT);
+            $duracion = rand(2, 6) . "h " . rand(0, 59) . "m";
+            $horaLlegada = date('H:i', strtotime($horaSalida . " +$duracion"));
+            echo "<tr>";
+            echo "<td>{$row['fecha']}</td>";
+            echo "<td>{$row['nombre_avion']}</td>";
+            echo "<td>$duracion</td>";
+            echo "<td>$horaSalida</td>";
+            echo "<td>$horaLlegada</td>";
+            echo "<td><strong>$" . number_format($row['precio'], 2) . "</strong></td>";
+            echo "<td><button class='btn btn-primary btn-sm'>Seleccionar</button></td>";
+            echo "</tr>";
+          }
+        } else {
+          echo "<tr><td colspan='7' class='text-center text-muted'>No hay vuelos disponibles en ese rango de fechas.</td></tr>";
+        }
+        ?>
+      </tbody>
+    </table>
+  </div>
+</body>
 </html>
