@@ -1,5 +1,31 @@
+<?php
+// index.php
+
+// 1. Capturar el tema seleccionado si se envía desde un formulario/enlace
+if (isset($_GET['theme'])) {
+    $selectedTheme = $_GET['theme'];
+    // Validar el tema para evitar inyecciones o valores no deseados
+    if (in_array($selectedTheme, ['auto', 'dark', 'light'])) {
+        // Guardar el tema en una cookie
+        // setcookie(nombre, valor, expiracion, ruta, dominio, seguro, httponly)
+        // La cookie expira en 30 días (time() + 60*60*24*30)
+        setcookie('bsTheme', $selectedTheme, time() + (86400 * 30), "/"); // 86400 = 1 día
+        $_COOKIE['bsTheme'] = $selectedTheme; // Actualizar $_COOKIE para usarlo inmediatamente en esta misma carga de página
+    }
+}
+
+// 2. Determinar el tema a aplicar
+// Primero, intentar obtener el tema de la cookie
+// Si no hay cookie, el tema por defecto será 'light'
+$currentTheme = $_COOKIE['bsTheme'] ?? 'light'; 
+
+// Si el valor de la cookie no es válido (ej. alguien lo manipuló), revertir al predeterminado
+if (!in_array($currentTheme, ['auto', 'dark', 'light'])) {
+    $currentTheme = 'light';
+}
+?>
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="<?= htmlspecialchars($currentTheme) ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,30 +35,25 @@
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      //Creando una función para cambiar el tema
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-bs-theme', theme);
-        }
+        // La función setTheme() y la lógica de localStorage han sido eliminadas
+        // ya que la persistencia del tema ahora se maneja en PHP.
     </script>
     <div class="container-fluid">
       <div class="row align-items-center justify-content-end p-2">
         <div class="col-auto">
-          <!-- Creando el Dropdown para seleccionar el tema -->
-            <div class="btn-group me-2">
+          <div class="btn-group me-2">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonThemes">
-                  <li><a class="dropdown-item" href="#" onclick="setTheme('auto')">Default Mode</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="setTheme('dark')">Dark Mode</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="setTheme('light')">Light Mode</a></li>
+                  <li><a class="dropdown-item" href="?theme=auto">Default Mode</a></li>
+                  <li><a class="dropdown-item" href="?theme=dark">Dark Mode</a></li>
+                  <li><a class="dropdown-item" href="?theme=light">Light Mode</a></li>
               </ul>
             </div>
-            <!-- Creando el Dropdown para seleccionar el método de pago -->
             <div class="btn-group">
               <button class="btn btn-secondary btn-sm" type="button">Payment Methods</button>
               <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               </button>
-              <!-- Creando el Dropdown para seleccionar el método de pago EN DOLARES DIGITALES-->
-                <ul class="dropdown-menu">
+              <ul class="dropdown-menu">
                   <li class="dropdown-item">Binance</li>
                   <li class="dropdown-item">PayPal</li>
                   <li class="dropdown-item">AirTM</li>
@@ -64,7 +85,6 @@
       </div>
       <div class="row mt-3 justify-content-end">
         <div class="tab-content" id="pills-tabContent">
-          <!--Seccion de inicio o Home-->
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
             <div class="container text-center mt-3">
               <div class="container text-center mt-3">
@@ -76,7 +96,6 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                       </div>
-                      <!--Creando el carrusel de imágenes de proyectos realizados-->
                       <div class="carousel-inner rounded shadow">
                         <div class="carousel-item active">
                           <img src="Res/GymmeterLogo.png" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Gymmeter">
@@ -102,11 +121,9 @@
               </div>
             </div>
           </div>
-          <!-- Sección de perfil -->
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
             texto 2
           </div>
-          <!-- Creando el tab de contacto con enlaces a redes sociales y correo -->
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
             <button class="btn btn-primary bg-secondary">
               <a href="https://eight-zinc-fab.notion.site/Adri-n-Arturo-Hern-ndez-Garc-a-c678597155b349d8a82e7921b0e90a1d?source=copy_link" class="text-bg-secondary">Perfil Profesional</a>
@@ -135,11 +152,9 @@
               </button>
             </div>
           </div>
-          <!-- Sección de búsqueda de vuelos y hoteles -->
           <div class="tab-pane fade" id="pills-search" role="tabpanel" aria-labelledby="pills-search-tab" tabindex="0">
             <div class="container mt-5">
               <h2 class="mb-4 text-center">🔍 Encuentra tu mejor opción de viaje</h2>
-              <!-- Formulario de búsqueda por formulario hacia Search.php -->
               <form method="GET" action="index.php" class="row g-3" id="searchForm">
                 <div class="col-md-4">
                   <label for="fecha" class="form-label">Fecha de viaje</label>
@@ -157,7 +172,6 @@
                   <button type="submit" class="btn btn-primary w-100">Buscar</button>
                 </div>
               </form>
-              <!-- Mostrando los resultados de la búsqueda por medio del formulario -->
               <div id="searchResults" class="mt-5">
                 <?php
                 if (isset($_GET['fecha']) && isset($_GET['tipo'])) {
@@ -172,7 +186,6 @@
         </div>
       </div>
 
-      <!-- Modal para cuentas bancarias -->
       <div class="modal fade" id="bankAccountsModal" tabindex="-1" aria-labelledby="bankAccountsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
@@ -214,7 +227,6 @@
         </div>
       </div>
     </div>
-    <!-- Footer de la página de Derechos reservados y compañias aliadas o que nos avalan y patrocinen -->
     <footer class="mt-auto bg-secondary py-3"> <div class="container text-center">
                 Todos los derechos reservados.
             </div>
@@ -242,7 +254,3 @@
     </script>
 </body>
 </html>
-
-/*
-
-*/
